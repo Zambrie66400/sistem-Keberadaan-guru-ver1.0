@@ -691,55 +691,7 @@
                 </div>
             </div>
 
-            <div style="background: linear-gradient(145deg, #fff3cd, #ffeaa7); padding: 2rem; border-radius: 15px; margin-top: 1rem;">
-                <h4 style="color: #856404; margin-bottom: 1rem;">☁️ Panduan Sambungan Google Sheets</h4>
-                <div style="background: white; padding: 1rem; border-radius: 10px; margin-bottom: 1rem; font-size: 14px;">
-                    <strong>Langkah 1:</strong> Pergi ke <a href="https://script.google.com" target="_blank" rel="noopener noreferrer">script.google.com</a><br>
-                    <strong>Langkah 2:</strong> Buat projek baru dan salin kod Google Apps Script<br>
-                    <strong>Langkah 3:</strong> Deploy sebagai Web App dengan akses "Anyone"<br>
-                    <strong>Langkah 4:</strong> Salin URL dan gantikan dalam sistem
-                </div>
-                <div style="background: #f8f9fa; padding: 1rem; border-radius: 10px; font-family: monospace; font-size: 12px; overflow-x: auto;">
-<strong>Kod Google Apps Script (Diperbaiki):</strong><br><br>
-function doPost(e) {<br>
-&nbsp;&nbsp;try {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;const sheet = SpreadsheetApp.getActiveSheet();<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;// Handle different data formats<br>
-&nbsp;&nbsp;&nbsp;&nbsp;let data;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;if (e.postData && e.postData.contents) {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data = JSON.parse(e.postData.contents);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;} else if (e.parameter) {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data = e.parameter;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;} else {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data = e;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;}<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;// Add header row if sheet is empty<br>
-&nbsp;&nbsp;&nbsp;&nbsp;if (sheet.getLastRow() === 0) {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sheet.appendRow(['Timestamp', 'Bulan', 'Tahun', 'Hari Sekolah', 'Jumlah Guru', 'Senarai Guru', 'Rekod Ketidakhadiran']);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;}<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;sheet.appendRow([<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data.timestamp || new Date(),<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data.month || '',<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data.year || '',<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data.schoolDays || '',<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data.totalTeachers || '',<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data.teacherList || '',<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data.absenceRecords || ''<br>
-&nbsp;&nbsp;&nbsp;&nbsp;]);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;return ContentService.createTextOutput(JSON.stringify({status: 'success'}));<br>
-&nbsp;&nbsp;} catch (error) {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;return ContentService.createTextOutput(JSON.stringify({status: 'error', message: error.toString()}));<br>
-&nbsp;&nbsp;}<br>
-}<br><br>
-function doGet(e) {<br>
-&nbsp;&nbsp;return ContentService.createTextOutput('Google Apps Script is working!');<br>
-}
-                </div>
-            </div>
+
         </div>
     </main>
 
@@ -1916,5 +1868,5 @@ function doGet(e) {<br>
             loadTeachersForAbsenceRecording(); // Initialize teacher dropdown for absence recording
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'993abccb43c3f50a',t:'MTc2MTMyMjE1NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'993ad0823364cf0c',t:'MTc2MTMyMjk2Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
